@@ -1,0 +1,29 @@
+.background-container{
+    background-image: url('../../../assets/img/wallpapers/moon-wallpaper.jpg');
+    min-height:40vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-position: center bottom;
+    background-position-y:60%;
+}
+
+.test{
+    min-height:45vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-position: center bottom;
+    background-position-y:60%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 75%, rgb(3, 31, 43)), url('../../../assets/img/wallpapers/moon-wallpaper.jpg');
+}
+
+.main-content{
+    margin-top: 20vh;
+}
+
+.titles{
+    font-size: 75px;
+}
+
+.aboutme-text{
+    margin-top: 105px;
+}
