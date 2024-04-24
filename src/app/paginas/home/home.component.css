@@ -1,0 +1,9 @@
+.hero-section{
+    height: 100vh;
+}
+
+.hero-img{
+    height: 100vh;
+    max-width: 100vw;
+    object-fit: cover;
+}

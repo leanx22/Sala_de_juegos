@@ -1,0 +1,43 @@
+.form-container{
+    height: 100vh;
+    max-width: 100vw;
+}
+
+.formu{    
+    /*background-color: rgb(51, 26, 46); rosita*/
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    min-width: 260px;
+    border: 2px;
+    border-color: white solid;
+    border-style: solid;
+}
+
+.hero-img{
+   /* max-width: 100vw;
+    min-height: 100vh;*/
+
+    height: 100vh;
+    width: 100%;
+    object-position: 50% 0%;
+
+    object-fit:cover;
+    filter: blur(1px);
+}
+
+.form-inputs{
+    /*background-color: rgb(27, 14, 25); rosita*/
+    background-color: rgba(255, 255, 255, 0.4);    
+    color: rgb(255, 255, 255);
+    text-align: start;
+    border: 2px;
+    border-color: white;
+    border-style: dashed;
+}
+
+::placeholder {
+    /*color: rgb(100, 44, 107); rosita*/
+    color:rgb(255, 255, 255);
+    opacity: 1; /* Firefox */
+    text-align: start;
+  }
