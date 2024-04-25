@@ -33,7 +33,18 @@
         </li>
 
       </ul>
-        <button class="btn btn-primary fw-semibold" type="submit">Iniciar sesión</button>
+      @if(!isUserLogged){  
+      <button 
+        routerLink="login"
+        class="btn btn-primary fw-semibold" 
+        type="submit">Iniciar sesión</button>
+      }
+      @else{
+        <button 
+        routerLink=""
+        class="btn btn-primary fw-semibold" 
+        type="submit">Panel de usuario</button>
+      }
     </div>
   </div>
 </nav>

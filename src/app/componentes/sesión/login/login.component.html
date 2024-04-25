@@ -9,14 +9,26 @@
                 
                 <h1 class="fs-4 mb-4 fw-bold">INICIAR SESIÓN</h1>
                 <div class="mb-3">
-                    <input type="email" class="form-inputs form-control fw-bold" id="email" placeholder="CORREO">
+                    <input 
+                    type="email" 
+                    [(ngModel)]="email"
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-inputs form-control fw-bold" 
+                    id="email" 
+                    placeholder="CORREO">
                 </div>
 
                 <div class="mb-3">
-                    <input type="password" class="form-inputs form-control fw-bold" id="password" placeholder="CONTRASEÑA">
+                    <input 
+                    type="password"
+                    [(ngModel)]="password"
+                    [ngModelOptions]="{standalone: true}" 
+                    class="form-inputs form-control fw-bold" 
+                    id="password" 
+                    placeholder="CONTRASEÑA">
                 </div>
                 <hr>
-                <button type="button" class="btn btn-outline-light">Entrar</button>
+                <button type="button" class="btn btn-outline-light" (click)="LogIn()">Entrar</button>
                 <small class="text-center mt-3">QUIERO CREAR UNA CUENTA AHORA</small>
             </form>             
         </div>           

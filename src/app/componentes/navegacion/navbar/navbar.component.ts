@@ -13,6 +13,7 @@ export class NavbarComponent {
   showNavbar: boolean;
   exceptNavbarRoutes: string[] = ['/login', '/register'];
   actualRoute: string = '';
+  isUserLogged:boolean = false;
 
   constructor(private router: Router)
   {
@@ -20,7 +21,8 @@ export class NavbarComponent {
     router.events.subscribe((val)=>{          
       if(val instanceof NavigationEnd)
       {
-        console.log(val.url);
+        console.log('Ruta: '+val.url);
+        this.checkLogin();
         if(this.exceptNavbarRoutes.includes(val.url))
         {
           this.showNavbar = false;          
@@ -32,5 +34,19 @@ export class NavbarComponent {
         this.actualRoute = val.url;
       }      
     });
+  }
+
+  public checkLogin()
+  {
+    //console.warn('Checkeando si el user esta logueado...');
+    let repositorio = localStorage.getItem('session');
+    if(repositorio != null)
+    {
+      this.isUserLogged = true;
+    }
+    else
+    {
+      this.isUserLogged = false;
+    }
   }
 }
