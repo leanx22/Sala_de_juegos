@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sala-de-juegos-utn": {
+      "hosting": {
+        "sala-de-juegos": [
+          "sala-de-juegos-utn"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sala-de-juegos-utn"
+  }
+}
