@@ -21,6 +21,7 @@ export class LoginComponent {
   //private authService: AuthService = Inject(AuthService);  
 
   public disableSubmit: boolean = false;
+  public isLoading: boolean = false;
 
   logInForm: FormGroup = new FormGroup({
     correo: new FormControl(''),
@@ -35,6 +36,8 @@ export class LoginComponent {
   public async IniciarSesion(): Promise<void>
   {
     this.disableSubmit = true;
+    this.isLoading = true;
+
     let datos: ICredenciales = {
       correo: this.logInForm.value.correo,
       clave: this.logInForm.value.clave,
@@ -47,6 +50,7 @@ export class LoginComponent {
     .catch((e)=>{
        console.error('No se pudo iniciar sesión: '+e.message);
        this.disableSubmit = false;
+       this.isLoading = false;
     });
 
   }

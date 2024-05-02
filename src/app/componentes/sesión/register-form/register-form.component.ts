@@ -17,6 +17,7 @@ export class RegisterFormComponent {
   //private authService: AuthService = Inject(AuthService);
   //private router: Router = Inject(Router);
   public disableSubmit: boolean = false;
+  public isLoading: boolean = false;
 
   registerForm: FormGroup = new FormGroup({
     correo: new FormControl(''),
@@ -35,6 +36,7 @@ export class RegisterFormComponent {
   {
     if(this.registerForm.invalid) return;
     this.disableSubmit = true;
+    this.isLoading = true;
     
     //Agregar el nombre de usuario!
     let datos: ICredenciales = {
@@ -49,6 +51,7 @@ export class RegisterFormComponent {
     .catch((e)=>{
        console.error('No se pudo registrar: '+e.message);
        this.disableSubmit = false;
+       this.isLoading = false; 
     });
   }
 

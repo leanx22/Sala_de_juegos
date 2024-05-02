@@ -25,6 +25,19 @@
         <button type="submit" class="btn btn-outline-light mb-2" [disabled]="disableSubmit">Entrar</button>
         <button type="button" class="btn btn-outline-danger" (click)="cancelar()">Volver</button>
         <small class="text-center mt-3">QUIERO CREAR UNA CUENTA <a routerLink="/auth/register">AHORA</a></small>
+        @if(isLoading)
+        {
+            <div class="d-flex flex-column flex-lg-row align-content-center bg-info bg-opacity-25 rounded rounded-2 mt-3">
                 
+                <div class="pancho-container d-flex flex-column justify-content-center align-content-center h-100">
+                    <iframe src="https://giphy.com/embed/3ohzgSHpvk6b8M7f9e" width="150" height="150"></iframe>
+                </div>
+                <div class="p-3">
+                    <h5 class="">CARGANDO...</h5>
+                    <p class="">Sé paciente, estoy viendo si los datos que ingresaste son correctos.<br>Mientras, podés ver a Panchito bailando.</p>
+                </div>
+
+            </div>
+        }
     </form>
 </div>
