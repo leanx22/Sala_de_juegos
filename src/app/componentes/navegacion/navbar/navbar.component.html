@@ -41,11 +41,12 @@
       }
       @else if (this.isUserLogged)
       {
+        <h5 class="me-4 text-white mt-1">¡Bienvenido {{userName}}!</h5>
         <button 
         routerLink=""
         class="btn btn-primary fw-semibold"
         (click) = "cerrarSesionTemporal()"
-        type="submit">Panel de usuario</button>        
+        type="submit">Cerrar sesión</button>        
       }
       @else{
         <button 

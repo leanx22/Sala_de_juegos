@@ -18,15 +18,17 @@ export class NavbarComponent {
   private exceptNavbarRoutes: string[] = ['/auth/register', '/auth/login'];
   public actualRoute: string = '';
   public isUserLogged:boolean | null = null;
+  public userName:string | null | undefined = null;
+  public user: User|null = null;
 
   constructor(private router: Router, private authService: AuthService)
   {
     this.showNavbar = false;     
     router.events.subscribe((val)=>{this.checkRoutesAndToggle(val,this.exceptNavbarRoutes);}); 
     
-    authService.authState$.subscribe((val: User | null)=>{
+    authService.authState$.subscribe((val: User | null)=>{          
       this.onStateChange(val);
-    });
+    });        
   }
 
   checkRoutesAndToggle(val:any, excRoutes: string[])
@@ -49,8 +51,9 @@ export class NavbarComponent {
   {
     if(user)
     {
-      console.log('Hay una sesión iniciada: '+user.email);
+      console.log('El usuario se encuentra logueado: '+user.email+' | '+user.displayName);
       this.isUserLogged = true;
+      this.userName = user.displayName || user.email;
     }
     else
     {

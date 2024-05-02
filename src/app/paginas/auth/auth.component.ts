@@ -6,11 +6,12 @@ import { User } from '@angular/fire/auth';
 
 import { FirestoreService } from '../../servicios/firestore.service';
 import { DocumentReference } from '@angular/fire/firestore';
+import { RegisterFormComponent } from '../../componentes/sesión/register-form/register-form.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, RegisterFormComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
@@ -24,14 +25,14 @@ export class AuthComponent {
   }
 
   private async redirectWhenSuccess(user: User|null, router: Router)
-  {
+  {    
     if(user)
     {
       setTimeout(() =>{ //espero un poco antes de redireccionar.
         router.navigate(['']).then((success) =>{
           if (success)this.saveUserLog(user); //no sacar esto de acá porque se buguea mal y se guardan varios logs en vez de uno.
         });
-      },2000);
+      },4000);
     }
   }
 
@@ -41,7 +42,7 @@ export class AuthComponent {
       //console.log('fecha RAW: '+fecha+' fecha CUSTOM: ' + fecha.toLocaleString());
       this.firestoreService.guardar('userLogs', {usuario: user.email, fecha: fecha.toLocaleString("es-AR",{timeZone:'America/Argentina/Buenos_Aires'})})
       .then((doc: DocumentReference)=>{
-        console.log('UserLog guardado: '+doc.id);
+        console.log('Log de inicio de sesión guardado. ID: '+doc.id);
       });
   }
 }

@@ -1,5 +1,6 @@
 import { Inject, Injectable, inject } from '@angular/core';
 import { signOut, onAuthStateChanged, Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, UserCredential, authState, User, getAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 export interface ICredenciales{
   correo: string;
@@ -15,6 +16,7 @@ export class AuthService {
   //private auth: Auth = Inject(Auth);
   readonly authState$ = authState(this.auth);
   private isLogged: boolean = false;
+  readonly test$ = new Observable<User>;
 
   public constructor(private auth:Auth)
   {
@@ -41,6 +43,11 @@ export class AuthService {
   public CerrarSesion(): Promise<void>
   {
     return this.auth.signOut();
+  }
+
+  get getCurrentUser():User|null
+  {
+    return this.auth.currentUser;
   }
 
 }

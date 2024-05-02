@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { HomeComponent } from './paginas/home/home.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
 
@@ -7,7 +8,8 @@ export const routes: Routes = [
 
     {
         path: '',
-        loadComponent: () => import('./paginas/home/home.component').then((m) => m.HomeComponent)
+        //loadComponent: () => import('./paginas/home/home.component').then((m) => m.HomeComponent),
+        component: HomeComponent,        
     },
 
     {

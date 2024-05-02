@@ -34,10 +34,7 @@ export class LoginComponent {
     clave: new FormControl(''),
   });
 
-  constructor(private authService: AuthService, private router: Router)
-  {
-    //this.authService = authService;
-  }
+  constructor(private authService: AuthService, private router: Router){}
 
   public async IniciarSesion(): Promise<void>
   {
@@ -51,7 +48,7 @@ export class LoginComponent {
     
     this.authService.IngresarConMailClave(datos)
     .then((userCredential: UserCredential)=>{
-      console.log('Sesión iniciada con éxito: '+userCredential.user);
+      console.log('Sesión iniciada - Email: ' + userCredential.user.email+' | dName: ' + userCredential.user.displayName+'.');
     })
     .catch((e)=>{
        this.disableSubmit = false;
