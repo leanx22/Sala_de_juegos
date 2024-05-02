@@ -28,7 +28,7 @@ export class RegisterFormComponent {
   constructor(private authService: AuthService, private router: Router)
   {
     this.authService.authState$.subscribe((state)=>{
-      console.log('Pasó algo random: '+JSON.stringify(state));
+      console.log('Pasó algo random: '+state?.email);
     });
   }
 

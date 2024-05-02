@@ -25,17 +25,11 @@ export class AuthComponent {
 
   private async redirectWhenSuccess(user: User|null, router: Router)
   {
-    console.log('hubieron cambios: ');
     if(user)
     {
-      console.log('user existe, está la sesion iniciada asi que guardo el log');
-      await this.saveUserLog(user);
-      console.log('ahora redirecciono...');
-      router.navigate(['']);
-    }
-    else
-    {
-      console.log('no hay user, asi que no hago na.');
+      router.navigate(['']).then((success) =>{
+        if (success)this.saveUserLog(user);
+      });
     }
   }
 
@@ -45,7 +39,7 @@ export class AuthComponent {
       //console.log('fecha RAW: '+fecha+' fecha CUSTOM: ' + fecha.toLocaleString());
       this.firestoreService.guardar('userLogs', {usuario: user.email, fecha: fecha.toLocaleString("es-AR",{timeZone:'America/Argentina/Buenos_Aires'})})
       .then((doc: DocumentReference)=>{
-        console.log('Log guardado: '+doc.id);
+        console.log('UserLog guardado: '+doc.id);
       });
   }
 }
