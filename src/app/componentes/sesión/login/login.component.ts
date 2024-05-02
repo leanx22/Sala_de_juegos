@@ -1,92 +1,59 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+
+import { UserCredential } from '@angular/fire/auth';
+
+import { AuthService, ICredenciales } from '../../../servicios/auth.service';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-  users:any = [];
+  //Por alguna razon Inject() no funciona, tengo que usar si o si el constructior para inyectar...
+  //private authService: AuthService = Inject(AuthService);  
 
-  email:string = '';
-  password:string = '';
+  public disableSubmit: boolean = false;
 
-  isLoggedIn = false;
+  logInForm: FormGroup = new FormGroup({
+    correo: new FormControl(''),
+    clave: new FormControl(''),
+  });
 
-  constructor(private router:Router)
-  {           
-    this.GenerateTestUsers();
-    this.users = this.GetUsers();
+  constructor(private authService: AuthService, private router: Router)
+  {
+    //this.authService = authService;
   }
 
-  public GenerateTestUsers()
+  public async IniciarSesion(): Promise<void>
   {
-    if(localStorage.getItem('users') != null)
-    {
-      console.warn('Los usuarios de prueba ya existen, no se van a crear ni actualizar!');
-      return;
-    }
-    console.log('Creando usuarios de prueba...');
-    
-    this.users.push({
-      'email':'admin@admin.com',
-      'password': 'admin123',       
+    this.disableSubmit = true;
+    let datos: ICredenciales = {
+      correo: this.logInForm.value.correo,
+      clave: this.logInForm.value.clave,
+    };
+
+    this.authService.IngresarConMailClave(datos)
+    .then((userCredential: UserCredential)=>{
+      console.log('Sesión iniciada con éxito: '+userCredential.user);
+    })
+    .catch((e)=>{
+       console.error('No se pudo iniciar sesión: '+e.message);
+       this.disableSubmit = false;
     });
 
-    this.users.push({
-      'email':'user@user.com',
-      'password': 'user123',            
-    });
-
-    let json = JSON.stringify(this.users);
-    localStorage.setItem('users', json);
   }
 
-  public GetUsers()
+  public cancelar(): void
   {
-    let repositorio = localStorage.getItem('users');
-    if(repositorio == null)
-    {
-      console.error('No existe repo de usuarios local.');
-      return;
-    }
-
-    let data = JSON.parse(repositorio);
-    return data;
-  }
-
-  public LogIn()
-  {
-    let actualUser;
-    this.users.forEach((user:any) => {
-      if(user.email == this.email && user.password == this.password)
-      {
-        console.log('Sesion iniciada!');
-        
-        actualUser = {
-          'isLoggedIn': true,
-          'user':this.email
-        };
-        
-        let json = JSON.stringify(actualUser);
-        localStorage.setItem('session', json);
-
-        this.isLoggedIn = true;
-        this.GoHome();
-      }
-    });
-  }
-
-  public GoHome()
-  {
-    const url = '';
-    this.router.navigate([url]);
+    this.router.navigate(['']);
   }
 
 }

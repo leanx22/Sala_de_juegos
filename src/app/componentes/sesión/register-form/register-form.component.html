@@ -1,9 +1,9 @@
 <div class="bg-warning d-flex justify-content-center">
     <form class="d-flex flex-column justify-content-center m-2 formu p-4 rounded-3 shadow shadow-lg text-white z-1 w-75"
-    [formGroup]="logInForm"
-    (ngSubmit)="IniciarSesion()">
+    [formGroup]="registerForm"
+    (ngSubmit)="Registrarse()">
                     
-        <h1 class="fs-4 mb-4 fw-bold">INICIAR SESIÓN</h1>
+        <h1 class="fs-4 mb-4 fw-bold">CREAR CUENTA</h1>
         <div class="mb-3">
             <input 
             type="email" 
@@ -15,6 +15,15 @@
 
         <div class="mb-3">
             <input 
+            type="text" 
+            class="form-inputs form-control fw-bold" 
+            id="username" 
+            placeholder="NOMBRE DE USUARIO"
+            formControlName="usuario">
+        </div>
+
+        <div class="mb-3">
+            <input 
             type="password"
             class="form-inputs form-control fw-bold" 
             id="password" 
@@ -22,9 +31,9 @@
             formControlName="clave">
         </div>
         <hr>
-        <button type="submit" class="btn btn-outline-light mb-2" [disabled]="disableSubmit">Entrar</button>
+        <button type="submit" class="btn btn-outline-light mb-2" [disabled]="disableSubmit">Registrarme</button>
         <button type="button" class="btn btn-outline-danger" (click)="cancelar()">Volver</button>
-        <small class="text-center mt-3">QUIERO CREAR UNA CUENTA <a routerLink="/auth/register">AHORA</a></small>
+        <small class="text-center mt-3">YA TENGO UNA <a routerLink="/auth/login">CUENTA</a></small>
                 
     </form>
 </div>

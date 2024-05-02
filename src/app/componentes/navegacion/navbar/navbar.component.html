@@ -33,17 +33,24 @@
         </li>
 
       </ul>
-      @if(!isUserLogged){  
+      @if(this.isUserLogged == false){  
       <button 
-        routerLink="login"
+        routerLink="auth/login"
         class="btn btn-primary fw-semibold" 
         type="submit">Iniciar sesión</button>
       }
-      @else{
+      @else if (this.isUserLogged)
+      {
         <button 
         routerLink=""
+        class="btn btn-primary fw-semibold"
+        (click) = "cerrarSesionTemporal()"
+        type="submit">Panel de usuario</button>        
+      }
+      @else{
+        <button 
         class="btn btn-primary fw-semibold" 
-        type="submit">Panel de usuario</button>
+        type="submit">CARGANDO...</button>
       }
     </div>
   </div>
