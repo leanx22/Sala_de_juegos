@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    isProduction: false,
     // supposing you have a backend where to send some requests
     //backendUrl: "http://127.0.0.1:8000",
 
@@ -12,4 +12,23 @@ export const environment = {
         authDomain:"sala-de-juegos-utn.firebaseapp.com",
         messagingSenderId:"1068695128805",
     },
+
+    testUsersCredentials: [
+        {
+            'email':'',
+            'password':''
+        },
+        {
+            'email':'admin@admin.com',
+            'password':'admin123'
+        },
+        {
+            'email':'test@test.com',
+            'password':'test123'
+        },
+        {
+            'email':'user@user.com',
+            'password':'user123'
+        },
+    ],
   };

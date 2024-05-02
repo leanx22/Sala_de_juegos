@@ -27,9 +27,11 @@ export class AuthComponent {
   {
     if(user)
     {
-      router.navigate(['']).then((success) =>{
-        if (success)this.saveUserLog(user);
-      });
+      setTimeout(() =>{ //espero un poco antes de redireccionar.
+        router.navigate(['']).then((success) =>{
+          if (success)this.saveUserLog(user); //no sacar esto de acá porque se buguea mal y se guardan varios logs en vez de uno.
+        });
+      },2000);
     }
   }
 

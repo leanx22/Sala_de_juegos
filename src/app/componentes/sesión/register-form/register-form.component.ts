@@ -18,6 +18,8 @@ export class RegisterFormComponent {
   //private router: Router = Inject(Router);
   public disableSubmit: boolean = false;
   public isLoading: boolean = false;
+  public showErrorAlert: boolean = false;
+  public errorMessage: string = "Ocurrió un error al registrarse.";
 
   registerForm: FormGroup = new FormGroup({
     correo: new FormControl(''),
@@ -49,9 +51,25 @@ export class RegisterFormComponent {
       console.log('Usuario registrado con éxito: '+userCredential.user);
     })
     .catch((e)=>{
-       console.error('No se pudo registrar: '+e.message);
+       console.log('No se pudo registrar: '+JSON.stringify(e));
        this.disableSubmit = false;
-       this.isLoading = false; 
+       this.isLoading = false;
+       if(e.code == "auth/invalid-email")
+       {
+        this.showError('La direccion de correo ingresada no es válida.');
+       }
+       else if(e.code == 'auth/email-already-in-use')
+       {
+          this.showError('Esta dirección de correo electrónico ya está en uso.');
+       }
+       else if(e.code == 'auth/weak-password')
+       {
+        this.showError('¡Esa contraseña es una papa! Pongamos algo un poco más seguro...');
+       }
+       else
+       {
+        this.showError();
+       }
     });
   }
 
@@ -65,4 +83,14 @@ export class RegisterFormComponent {
     this.router.navigate(['']);
   }
   
+  public showError(message?: string): void
+  {
+    if(message)
+    {
+      this.errorMessage = message;
+    }
+
+    this.showErrorAlert = true;
+  }
+
 }
