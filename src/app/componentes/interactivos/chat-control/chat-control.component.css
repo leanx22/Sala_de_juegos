@@ -1,0 +1,32 @@
+.chat-container{
+    min-width: 350px;
+    width: 1250px;
+    min-height: 75vh;
+    max-width: 50vw;
+    margin-top: 50px;
+}
+
+.messages-container{
+    min-height:550px;
+    max-height: 550px;
+    background-color: rgb(19, 19, 19);
+}
+
+.message{
+    max-width: 45%;
+    min-width: 25%;
+}
+
+.input-box{
+    background-color: rgb(19, 19, 19);
+}
+
+.mini-text{
+    color:rgb(255, 255, 255);
+    opacity: 35%;
+    font-size: 12px;
+}
+
+.message-text{
+    word-break: break-word;
+}

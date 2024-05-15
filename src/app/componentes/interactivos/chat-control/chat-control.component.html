@@ -1,0 +1,31 @@
+<div class="blur">
+
+</div>
+
+<div class="chat-container bg-dark rounded-4 shadow-lg p-4 d-flex flex-column">
+    <h1 class="fs-4 fw-bold text-white text-center">CHAT GENERAL</h1>
+    <div class="messages-container rounded-4 p-3 overflow-scroll">
+        @for(chat of chats; track chat)
+        {
+            <div class="w-100 my-2 d-flex flex-row"
+            [class.flex-row-reverse]="chat.author == getCurrentUserEmail">
+                <div class="message d-flex flex-column rounded-1 p-2 text-white overflow-auto overflow"
+                [class.bg-success]="chat.author == getCurrentUserEmail"
+                [class.bg-dark]="chat.author != getCurrentUserEmail">
+                    <strong class="mini-text">{{chat.author}}</strong>
+                    <p class="message-text overflow-scroll">{{chat.message}}</p>
+                    <div class="w-full text-end">
+                        <small class="mini-text fw-bold">{{chat.date}}</small>
+                    </div>
+                </div>                                
+            </div>
+            
+        }
+    </div>
+    <form class="w-100" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+        <div class="d-flex justify-content-center align-items-center mt-4">        
+            <input formControlName="message" type="text" class="input-box border-0 w-75 rounded-4 p-2 fw-semibold text-white" placeholder="Click acá para escribir un mensaje..">
+            <button type="submit" class="btn btn-primary rounded-pill mx-auto px-5 fw-semibold">Enviar</button>              
+        </div>
+    </form>  
+</div>

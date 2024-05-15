@@ -15,7 +15,7 @@ import { User } from '@angular/fire/auth';
 
 export class NavbarComponent {  
   public showNavbar: boolean;
-  private exceptNavbarRoutes: string[] = ['/auth/register', '/auth/login', '/yo'];
+  private exceptNavbarRoutes: string[] = ['/auth/register', '/auth/login'];
   public actualRoute: string = '';
   public isUserLogged:boolean | null = null;
   public userName:string | null | undefined = null;

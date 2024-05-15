@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, DocumentData,Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,12 @@ export class FirestoreService {
     return addDoc(col, data);
   }
 
-  public async traerDatos(coleccion: string)
+  public traerDatos(coleccion: string):Observable<(DocumentData | (DocumentData & {}))[]>
   {
     let col = collection(this.firestore, coleccion);
     let observable = collectionData(col);
 
-    observable.subscribe((respuesta)=>{
-      return respuesta;
-    });
+    return observable;
   }
 
   public async actualizar(coleccion: string, idDoc: string, data: object): Promise<void>

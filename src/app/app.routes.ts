@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AuthGuard, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { HomeComponent } from './paginas/home/home.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
-
+const redirectUnauthenticatedToLogin = () => redirectUnauthorizedTo(['auth']);
 export const routes: Routes = [    
 
     {
@@ -42,5 +42,12 @@ export const routes: Routes = [
     {
         path: 'yo',
         loadComponent: () => import('./paginas/sobre-mi/sobre-mi.component').then((m) => m.SobreMiComponent)
+    },
+
+    {
+        path: 'chat',
+        loadComponent: () => import('./paginas/chat/chat.component').then((m) => m.ChatComponent),
+        canActivate: [AuthGuard],
+        data: {authGuardPipe:redirectUnauthenticatedToLogin},
     },
 ];
