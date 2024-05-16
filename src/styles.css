@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'simple-keyboard/build/css/index.css';
+
 body{
     /*background-color: rgb(33, 37, 41); old*/
     background-color: rgb(3,31,43);

@@ -1,0 +1,29 @@
+@if(showPopup){
+<div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+  <strong class="text-white fs-1">PERDISTE!</strong>
+  <small class="text-white">Palabras que pudiste adivinar: {{palabrasAcertadas}}</small>
+  <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2">Volver a intentar</button>
+</div>
+}
+
+@if(showPopupWin){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-white fs-1">{{display}}!</strong>
+    <small class="text-white">ADIVINASTE LA PALABRA</small>
+    <button type="button" (click)="nuevoJuego()" class="btn btn-outline-success mt-2">Continuar</button>
+  </div>
+  }
+
+<div class="game-container border p-2 d-flex flex-column justify-content-end align-items-center">
+  <strong class="text-white fs-1">
+    @for(char of display; track char)    
+    {
+      {{ char }}
+    }    
+  </strong>
+  <strong class="mt-5 text-white text-center">Vidas: {{vidas}}<br>Palabras acertadas: {{palabrasAcertadas}}</strong>
+  <div class="teclado w-100 mt-3">
+    <app-teclado-virtual (keyPress)="intentarLetra($event)"></app-teclado-virtual>
+  </div>
+</div>
+

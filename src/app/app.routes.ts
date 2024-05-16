@@ -50,4 +50,24 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: {authGuardPipe:redirectUnauthenticatedToLogin},
     },
+
+    {
+        path: 'jugar',
+        loadComponent: () => import('./paginas/contenedor-juegos/contenedor-juegos.component').then((m) => m.ContenedorJuegosComponent),
+        children: [
+            {
+                title: 'Hora de jugar',
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/',
+            },
+            {
+                title: 'Juguemos al ahorcado',
+                path: 'ahorcado',
+                loadComponent: () => import('./componentes/interactivos/juegos/ahorcado/ahorcado.component').then((m) => m.AhorcadoComponent),
+                canActivate: [AuthGuard],
+                data: {authGuardPipe:redirectUnauthenticatedToLogin},
+            }
+        ]
+    },
 ];
