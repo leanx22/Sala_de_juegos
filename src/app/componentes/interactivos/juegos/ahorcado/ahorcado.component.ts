@@ -19,6 +19,8 @@ export class AhorcadoComponent {
   public palabrasAcertadas: number = 0;
   public showPopup: boolean = false;
   public showPopupWin: boolean = false;
+  public letrasIncorrectas: string[] = [];
+  public respuesta: string = "";
 
   constructor() {
     this.nuevoJuego();
@@ -26,11 +28,14 @@ export class AhorcadoComponent {
 
   public nuevoJuego()
   {
+    this.letrasIncorrectas = [];
     this.showPopup = false;
     this.showPopupWin = false;
     this.letrasAdivinadas = 0;
     this.vidas = 5;
     this.wordsService.generarPalabra();
+    console.log("La respuesta es: "+this.wordsService.obtenerPalabraSeleccionada);
+    this.respuesta = this.wordsService.obtenerPalabraSeleccionada;
     this.wordArray = this.wordsService.obtenerPalabraSeleccionada?.split('');
     
     console.log(this.wordArray);
@@ -48,22 +53,23 @@ export class AhorcadoComponent {
       {
         this.display[i] = letra;
         delete this.wordArray[i];
-        console.log('queda: '+this.wordArray);
         this.letrasAdivinadas++;
         letraCorrecta = true;
-        console.log('adivinaste la letra!');
-        break;
       }
     }
 
     if(!letraCorrecta)
     {
+      if(!this.letrasIncorrectas.includes(letra))
+      {
+        this.letrasIncorrectas.push(letra);    
+      }      
+      
       this.vidas > 0 ? this.vidas-=1 : this.vidas;
       if(this.vidas<=0)
       {
         this.onEndGame();
       }
-      console.log('Letra incorrecta! vidas: '+this.vidas);
       return;
     }
 
@@ -77,7 +83,6 @@ export class AhorcadoComponent {
   public onWin()
   {
     this.palabrasAcertadas++;
-    console.log('GANASTE!!!');
     this.showPopupWin = true;
   }
 
@@ -85,7 +90,6 @@ export class AhorcadoComponent {
   {
     this.vidas = 0;
     this.showPopup = true;
-    console.log('PERDISTE!!!');
   }
 
 }

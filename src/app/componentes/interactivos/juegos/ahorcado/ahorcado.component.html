@@ -1,6 +1,6 @@
 @if(showPopup){
 <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
-  <strong class="text-white fs-1">PERDISTE!</strong>
+  <strong class="text-white fs-1">PERDISTE - La palabra era: {{respuesta}}</strong>
   <small class="text-white">Palabras que pudiste adivinar: {{palabrasAcertadas}}</small>
   <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2">Volver a intentar</button>
 </div>
@@ -21,7 +21,14 @@
       {{ char }}
     }    
   </strong>
-  <strong class="mt-5 text-white text-center">Vidas: {{vidas}}<br>Palabras acertadas: {{palabrasAcertadas}}</strong>
+  <strong class="mt-5 text-white text-center">Vidas: {{vidas}}<br>
+    Palabras acertadas: {{palabrasAcertadas}}<br>
+    Letras incorrectas:
+    @for(letra of letrasIncorrectas; track letra)    
+    {
+      {{ letra }}
+    }
+  </strong>
   <div class="teclado w-100 mt-3">
     <app-teclado-virtual (keyPress)="intentarLetra($event)"></app-teclado-virtual>
   </div>

@@ -29,11 +29,9 @@ export class TecladoVirtualComponent {
 
   onChange = (input: string) => {
     this.value = input;
-    //console.log("Input changed", input);
   };
 
   onKeyPress = (button: string) => {
-    console.log("Tecla presionada: ", button);
     this.keyPress.emit(button);
     if (button === "{shift}" || button === "{lock}") this.handleShift();
   };

@@ -8,5 +8,14 @@ export const palabras: string[] = [
     "teclado",
     "monitor",
     "servidor",
-    "creeper", 
+    "creeper",
+    "romano",
+    "discord",
+    "oreo",
+    "celular",
+    "goku",
+    "alfombra",
+    "arroz",
+    "plato",
+    "cuadro"
 ];
