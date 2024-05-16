@@ -67,6 +67,13 @@ export const routes: Routes = [
                 loadComponent: () => import('./componentes/interactivos/juegos/ahorcado/ahorcado.component').then((m) => m.AhorcadoComponent),
                 canActivate: [AuthGuard],
                 data: {authGuardPipe:redirectUnauthenticatedToLogin},
+            },
+            {
+                title: 'Juguemos a mayor y menor',
+                path: 'mayormenor',
+                loadComponent: () => import('./componentes/interactivos/juegos/mayor-menor/mayor-menor.component').then((m) => m.MayorMenorComponent),
+                canActivate: [AuthGuard],
+                data: {authGuardPipe:redirectUnauthenticatedToLogin},
             }
         ]
     },

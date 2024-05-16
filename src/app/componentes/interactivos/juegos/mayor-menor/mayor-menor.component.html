@@ -1,0 +1,20 @@
+@if(showGameOver){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-white fs-1">PERDISTE</strong>
+    <small class="text-white">Tus puntos/racha: {{racha}}</small>
+    <small class="text-white">El numero que seguía era: {{next}}</small>
+    <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2">Volver a intentar</button>
+  </div>
+  }
+
+<div class="game-container border d-flex flex-column justify-content-center align-items-center text-white">
+  <strong class="fs-2">CARTA</strong>
+  <strong class="fs-1">{{numero_actual}}</strong>
+  <label class="text-white fw-semibold">El siguiente numero será:</label>
+  <div class="d-flex flex-row justify-content-center align-items-center border border-2 mt-2 rounded-3 p-2">
+    <button type="button" class="btn btn-info mx-2" (click)="intentar(true)">MAYOR</button>    
+    <button type="button"  class="btn btn-info mx-2" (click)="intentar(false)">MENOR</button>
+  </div>
+  <strong class="fs-5 mt-2">RACHA/PUNTOS: {{racha}}</strong>
+</div>
+

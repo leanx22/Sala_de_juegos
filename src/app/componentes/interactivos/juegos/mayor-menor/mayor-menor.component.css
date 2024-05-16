@@ -1,0 +1,11 @@
+.game-container{
+    min-width: 640px;
+    min-height: 480px;
+}
+
+.popup{
+    min-width: 100vw;
+    min-height: 100vh;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.493);
+}
