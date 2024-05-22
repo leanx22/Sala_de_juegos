@@ -1,20 +1,28 @@
 @if(showGameOver){
   <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
-    <strong class="text-white fs-1">PERDISTE</strong>
+    <strong class="text-danger fs-1">PERDISTE</strong>
     <small class="text-white">Tus puntos/racha: {{racha}}</small>
     <small class="text-white">El numero que seguía era: {{next}}</small>
     <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2">Volver a intentar</button>
   </div>
-  }
+}
+
+@if(showGameWin){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-success fs-1">GANASTE!</strong>
+    <small class="text-white">Conseguiste 10 puntos seguidos</small>
+    <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2 fw-semibold border-2">Volver a jugar</button>
+  </div>
+}
 
 <div class="game-container border d-flex flex-column justify-content-center align-items-center text-white">
   <strong class="fs-2">CARTA</strong>
   <strong class="fs-1">{{numero_actual}}</strong>
   <label class="text-white fw-semibold">El siguiente numero será:</label>
-  <div class="d-flex flex-row justify-content-center align-items-center border border-2 mt-2 rounded-3 p-2">
-    <button type="button" class="btn btn-info mx-2" (click)="intentar(true)">MAYOR</button>    
-    <button type="button"  class="btn btn-info mx-2" (click)="intentar(false)">MENOR</button>
+  <div class="d-flex flex-row justify-content-center align-items-center border border-2 rounded-pill mt-2 p-2">
+    <button type="button" class="btn btn-info rounded-0 rounded-start-pill me-1 fw-semibold" (click)="intentar(false)">MENOR</button>    
+    <button type="button"  class="btn btn-info rounded-0 rounded-end-pill ms-1 fw-semibold" (click)="intentar(true)">MAYOR</button>
   </div>
-  <strong class="fs-5 mt-2">RACHA/PUNTOS: {{racha}}</strong>
+  <strong class="fs-5 mt-5 text-center">PUNTOS <br> {{racha}}/10</strong>
 </div>
 

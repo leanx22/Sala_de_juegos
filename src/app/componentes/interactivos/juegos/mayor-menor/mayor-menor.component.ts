@@ -11,6 +11,7 @@ export class MayorMenorComponent {
   public racha: number = 0;
   public numero_actual: number = 0;
   public showGameOver: boolean = false;
+  public showGameWin: boolean = true;
   public next: number = 0;
 
   constructor()
@@ -26,6 +27,7 @@ export class MayorMenorComponent {
   public nuevoJuego()
   {
     this.showGameOver = false;
+    this.showGameWin = false;
     this.racha = 0;
     this.numero_actual = this.generarCarta();
   }
@@ -33,11 +35,21 @@ export class MayorMenorComponent {
   private onAdivina():void
   {
     this.racha++;
+
+    if(this.racha >= 10)
+    {
+        this.onGameWin();
+    }
   }
 
   private onGameOver():void
   {
     this.showGameOver = true;
+  }
+
+  private onGameWin():void
+  {
+    this.showGameWin = true;
   }
 
   public intentar(mayor: boolean):void
