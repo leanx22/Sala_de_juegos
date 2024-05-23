@@ -1,0 +1,36 @@
+@if(showGameOver){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-danger fs-1">PERDISTE</strong>
+    <small class="text-white">Tus puntos/racha: {{puntos}}</small>
+    <small class="text-white">La rerpuesta era: '{{pregunta.respuestaCorrecta}}'</small>
+    <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2">Volver a intentar</button>
+  </div>
+}
+
+@if(showGameWin){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-success fs-1">GANASTE!</strong>
+    <small class="text-white">Conseguiste 10 puntos seguidos</small>
+    <button type="button" (click)="nuevoJuego()" class="btn btn-outline-info mt-2 fw-semibold border-2">Volver a jugar</button>
+  </div>
+}
+
+@if(showCorrectAnswerPopup){
+  <div class="popup fixed-top d-flex flex-column justify-content-center align-items-center">
+    <div class="p-4 d-flex flex-column justify-content-center align-items-center bg-white rounded rounded-2">
+      <strong class="text-success fs-1">CORRECTO</strong>
+      <button type="button" (click)="nuevaPregunta()" class="btn btn-success mt-2 fw-semibold">Siguiente pregunta</button>      
+    </div>
+  </div>
+}
+
+<div class="game-container border d-flex flex-column justify-content-center align-items-center text-white">
+  <img src="{{this.imageUrl}}" class="image-container border border-2 border-white">
+  <strong class="mt-2 fw-semibold">{{this.pregunta.pregunta}}</strong>
+  <div class="border border-2 border-white border-start-0 border-end-0 py-3 px-5 d-flex flex-column mt-2 w-100">
+    <button (click)="this.Responder(0)" type="button" class="btn btn-info rounded-pill fw-semibold" [disabled]="this.isLoading">A. <strong class="text-white">{{this.pregunta.respuestas[0]}}</strong></button>
+    <button (click)="this.Responder(1)" type="button" class="btn btn-info rounded-pill fw-semibold my-2" [disabled]="this.isLoading">B. <strong class="text-white">{{this.pregunta.respuestas[1]}}</strong></button>
+    <button (click)="this.Responder(2)" type="button" class="btn btn-info rounded-pill fw-semibold" [disabled]="this.isLoading">C. <strong class="text-white">{{this.pregunta.respuestas[2]}}</strong></button>
+  </div>
+</div>
+
