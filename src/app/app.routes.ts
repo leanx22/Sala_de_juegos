@@ -81,6 +81,13 @@ export const routes: Routes = [
                 loadComponent: () => import('./componentes/interactivos/juegos/preguntados/preguntados.component').then((m) => m.PreguntadosComponent),
                 canActivate: [AuthGuard],
                 data: {authGuardPipe:redirectUnauthenticatedToLogin},
+            },
+            {
+                title: 'La Ruleta Rusa',
+                path: 'rr',
+                loadComponent: () => import('./componentes/interactivos/juegos/RuletaRusa/juego/juego.component').then((m) => m.JuegoComponent),
+                canActivate: [AuthGuard],
+                data: {authGuardPipe:redirectUnauthenticatedToLogin},
             }
         ]
     },

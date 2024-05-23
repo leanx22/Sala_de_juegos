@@ -1,0 +1,8 @@
+<div class="game-container border border-2 border-white shadow-lg d-flex flex-column justify-content-end align-items-center">
+  <strong class="text-white">Funciono!</strong>
+  <div class="border-top border-2 border-white w-100 d-flex flex-row justify-content-center p-2 bg-dark">    
+    <button type="button" (click)="this.shot()" class="btn btn-outline-info w-100" [disabled]="!this.playerTurn">Dispararse</button>
+    <button type="button" (click)="this.shot(false)" class="btn btn-outline-info mx-2 w-100" [disabled]="!this.playerTurn">Disparar</button>
+    <button type="button" class="btn btn-outline-info w-100" [disabled]="!this.playerTurn">Inventario</button>
+  </div>
+</div>
