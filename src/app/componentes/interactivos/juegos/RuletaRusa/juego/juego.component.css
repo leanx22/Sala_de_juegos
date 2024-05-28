@@ -21,3 +21,59 @@
 .image-container{
     max-height: 130px;
 }
+
+.logger{
+    border-top: 4px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+
+    border-color: rgb(80, 80, 80);
+    border-style: solid;
+
+    height: 112px;
+    overflow: scroll;
+    max-width: 640px;
+    background-color: black;    ;
+}
+
+.hud{
+    height: 42px;
+    max-width: 640px;
+    background-color: rgb(247, 190, 105);
+
+    border-top: 4px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+}
+
+.ui-balas{
+    max-height: 48px;
+    min-width: 142px;
+}
+
+.ui-dano{
+    max-height: 48px;
+    min-width: 48px;
+}
+
+.ui-icons{
+    max-height: 124px;
+}
+
+.reverse{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); 
+}
+
+.popup{
+    min-width: 100vw;
+    min-height: 100vh;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.493);
+}
+    

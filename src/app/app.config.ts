@@ -9,9 +9,11 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AuthService } from './servicios/auth.service';
 import { provideHttpClient } from '@angular/common/http';//
+import { LoggerService } from './servicios/juegos/Ruleta/logger.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    LoggerService,
     provideRouter(routes), 
     provideHttpClient(),//
     importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))), 

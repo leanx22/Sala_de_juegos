@@ -33,3 +33,14 @@
     width: 124px;
     opacity: 72%;
 }
+
+.contenedor-base{
+    margin-left: 160px;
+    margin-right: 160px;
+    background-color: rgb(4, 42, 58);
+}
+
+a{
+    color: rgb(255, 81, 0);
+    text-decoration: none;
+}

@@ -15,20 +15,54 @@
             </p>
         </div>
     </div>
-    <div class="row p-4 mx-md-4">
-        <div class="col-12 d-flex flex-column align-items-center">                         
-            <p class="text-white fs-6">
+    <div class="row p-4 contenedor-base">
+        <div class="col-12 d-flex flex-column">
+            <h2 class="text-white text-start fw-bold">BIO</h2>
+            <p class="text-white fs-5 fw-semibold">
                 Tengo 21 años, actualmente estudio una tecnicatura universitaria en programación en UTNFRA.<br>
-                Este trabajo práctico fue hecho para practicar el manejor de Angular y TypeScript junto con distintos servicios de Firebase. El enunciado del atrabajo puede encontrarse <a href="#">aquí</a>.
+                Este trabajo práctico se hizo con el fin de practicar el manejo de Angular y TypeScript junto con distintos servicios de Firebase.<br>
+                El enunciado del atrabajo puede encontrarse en <a class="fw-bold" href="https://drive.google.com/file/d/1xb3mXWdlNXJ0x6NC2g6iNBqQPJBAO5T5/view?usp=sharing">este link</a>.
             </p>
         </div>
     </div>
-    <div class="row p-4 mx-md-4">
-        <div class="col-12 d-flex flex-column align-items-center">                         
+    <div class="row p-4 contenedor-base">
+        <div class="col-12 d-flex flex-column">                         
             <h2 class="fw-bold text-white">JUEGO PERSONALIZADO</h2>
-            <p class="text-white fs-6 mt-4">
-               Para este trabajo decidí realizar el famoso juego de la ruleta rusa.
+            <p class="text-white fs-5 mt-4">
+              Bueno, para este trabajo me decidí por hacer un rip-off del juego <a target="_blank" href="https://en.wikipedia.org/wiki/Buckshot_Roulette">Buckshot Roulette</a>.
+              El juego tiene las mísmas reglas básicas de la mítica <a target="_blank" href="https://es.wikipedia.org/wiki/Ruleta_rusa">"Ruleta rusa"</a>, sin embargo, cuenta con algunos cambios interesantes.
+              Ahora los jugadores no sólo pueden dispararse a ellos mismos como siempre, en esta versión también tienen la opción de <strong>dispararle a su rival</strong> si así lo desean. Por último, se le 
+              brindará a cada jugador con distintos <strong>ítems (o powerUps)</strong> para cambiar el rumbo de la partida.
+              
             </p>
         </div>
     </div>
+    <div class="row p-4 contenedor-base">
+      <div class="col-12 d-flex flex-column">                         
+        <h2 class="fw-bold text-white">CÓMO JUGAR A LA RULETA DEL CONURBANO</h2>
+        <p class="text-white fs-5 mt-4">
+          El juego se basa en <strong>ganar una partida</strong>, la cual consta de una <strong>cantidad indefinida de rondas</strong>.
+          <br><br>Al inicio de cada ronda:</p>
+          <ul class="text-white fs-5">
+            <li>Se le repartirá 1(UN) item a cada jugador.</li>
+            <li><strong>Siempre</strong> comenzará la ronda aquel jugador que <strong>recibió el disparo en la ronda anterior</strong><br>(Si se trata de la primer ronda de la partida iniciará el jugador humano).</li>
+            <li>Se recarga el arma de forma <strong>aleatoria</strong>.</li>
+          </ul>
+
+          <br><br><p class="text-white fs-5">En cada turno el jugador (o la IA, dependiendo de quién es el turno) podrá elegir entre <strong>dispararse a sí mismo, 
+          disparar a su rival, o utilizar un objeto.<br></strong>
+          <ul class="text-white fs-5">
+            <li>Si el jugador se dispara a sí mismo y muere se le resta una vida y comienza la ronda nuevamente, <strong>repitiendo su turno</strong> (ya que fué el ultimo en recibir un disparo).</li>
+            <li>Si el jugador se dispara a sí mismo y no pasa nada <strong>repite su turno</strong>. ¡Esto puede repetirse cuantas veces quiera!</li>
+            <li>Si se decide dispararle al rival y no sucede nada, se hace cambios de turno.</li>
+            <li>Si se decide dispararle al rival y la bala sale, entonces se le resta una vida al rival y éste comenzará la siguiente ronda.</li>
+            <li>¡Utilizar un objeto <strong>no consume tu turno!</strong></li>
+          </ul>
+          
+          <br><br><br>
+          
+          <p class="text-white fs-5">Aquel que pierda todas sus vidas pierde. En caso de que <strong>ambos jugadores tengan una vida</strong>, se inicia la muerte súbita (no se admiten ítems que curen a los jugadores).</p>    
+          <img src="../../../assets/img/project-img/ruletita-tutorial.jpg">
+      </div>
+  </div>
 </div>
