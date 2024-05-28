@@ -226,7 +226,7 @@ export class JuegoComponent {
             
             this.logger.addLog('Todo listo: '+ rounds +' balas, '+ trueBulletsCount +' de ellas son letales... Comenzando la ronda!');
         }
-        
+        this.actualizarCartuchoUI();
         this.round++;
         return;
     }
