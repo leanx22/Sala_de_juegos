@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { HomeComponent } from './paginas/home/home.component';
-import { AuthComponent } from './paginas/auth/auth.component';
 import { LoginComponent } from './componentes/sesión/login/login.component';
 import { ContenedorJuegosComponent } from './paginas/contenedor-juegos/contenedor-juegos.component';
 
@@ -12,8 +11,6 @@ export const routes: Routes = [
     /*
     /IMPORTANTE: Algunas rutas no hacen uso de 'lazy loading', ya que consideré que algunas de las mismas ya deberían estar
     /cargadas para que el usuario pueda interactuar rápidamente con ellas, además de que no son muy pesadas.
-    /De cualquier forma, la línea del lazy loading en dichas rutas está comentada, por lo que si es necesario, se puede
-    /comentar la carga del componente y habilitar el lazy loading fácilmente.
     */
 
     {
@@ -23,8 +20,7 @@ export const routes: Routes = [
 
     {
         path: 'auth',
-        loadComponent: () => import('./paginas/auth/auth.component').then((m) => m.AuthComponent),
-        //component: AuthComponent,
+        loadComponent: () => import('./paginas/auth/auth.component').then((m) => m.AuthComponent),        
         children: [
             {
                 title: 'Sala de juegos',
@@ -35,7 +31,6 @@ export const routes: Routes = [
             {
                 title: 'Sala de juegos | Inicio de sesión',
                 path: 'login',
-                //loadComponent: () => import('./componentes/sesión/login/login.component').then((m) => m.LoginComponent),
                 component: LoginComponent,
                 canActivate: [AuthGuard],
                 data: {authGuardPipe:redirectLoggedInToHome},
@@ -63,8 +58,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'jugar',
-        //loadComponent: () => import('./paginas/contenedor-juegos/contenedor-juegos.component').then((m) => m.ContenedorJuegosComponent),
+        path: 'jugar',        
         component: ContenedorJuegosComponent,
         children: [
             {
